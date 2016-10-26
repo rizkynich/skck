@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns2="PKK" xmlns:ns1="PPK" xmlns:ns4="PerpanjanganTambat" xmlns:ns3="SPOG" xmlns:tns="http://xmlns.example.com/1470730142967" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="SchemaNewVMS" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns5="RKBM" xmlns:ns6="PindahKeluar" name="Untitled" targetNamespace="http://xmlns.example.com/1470730142967">
+    <wsdl:types>
+        <xs:schema xmlns:ppk="PPK" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="PPK" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="detailPPKType">
+                <xs:sequence>
+                    <xs:element name="nomorRpkRo" type="xs:string"/>
+                    <xs:element name="nomorPkk" type="xs:string"/>
+                    <xs:element name="nomorPPKB" type="xs:string"/>
+                    <xs:element name="nomorRkbmMuat" type="xs:string"/>
+                    <xs:element name="nomorRkbmBongkar" type="xs:string"/>
+                    <xs:element name="kegiatanBongkar" type="xs:string"/>
+                    <xs:element name="kegiatanMuat" type="xs:string"/>
+                    <xs:element name="komoditi" type="xs:string"/>
+                    <xs:element name="nomorGudang" type="xs:string"/>
+                    <xs:element name="keterangan" type="xs:string"/>
+                    <xs:element name="tanggalMulaiTambat" type="xs:string"/>
+                    <xs:element name="jamSelesaiTambat" type="xs:string"/>
+                    <xs:element name="tanggalSelesaiTambat" type="xs:string"/>
+                    <xs:element name="jamMulaiTambat" type="xs:string"/>
+                    <xs:element name="kadeMeterAwal" type="xs:string"/>
+                    <xs:element name="kadeMeterAkhir" type="xs:string"/>
+                    <xs:element name="status" type="xs:string"/>
+                    <xs:element name="portCode" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="reqPPKType">
+                <xs:sequence>
+                    <xs:element name="nomorRpkRo" type="xs:string"/>
+                    <xs:element name="nomorPpk" type="xs:string"/>
+                    <xs:element name="kodeDermaga" type="xs:string"/>
+                    <xs:element name="tanggalRencana" type="xs:string"/>
+                    <xs:element name="jamRencana" type="xs:string"/>
+                    <xs:element name="portCode" type="xs:string"/>
+                    <xs:element ref="ppk:detailPpk" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="returnPPKResponeType">
+                <xs:sequence>
+                    <xs:element name="nomorPpk" type="xs:string"/>
+                    <xs:element name="nomorRpkro" type="xs:string"/>
+                    <xs:element name="portCode" type="xs:string"/>
+                    <xs:element name="statusCode" type="xs:string"/>
+                    <xs:element name="statusMessage" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="detailPpk" type="ppk:detailPPKType"/>
+            <xs:element name="req" type="ppk:reqPPKType"/>
+            <xs:element name="return" type="ppk:returnPPKResponeType"/>
+        </xs:schema>
+        <xs:schema xmlns:pkk="PKK" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="PKK" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="entryPKKResponseType">
+                <xs:sequence>
+                    <xs:element name="nomorPKK" type="xs:string"/>
+                    <xs:element name="portCode" type="xs:string"/>
+                    <xs:element name="statusCode" type="xs:string"/>
+                    <xs:element name="statusMessage" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="reqPKKType">
+                <xs:sequence>
+                    <xs:element name="nomorPKK" type="xs:string"/>
+                    <xs:element name="perusahaanNama" type="xs:string"/>
+                    <xs:element name="tandaPendaftaranKapal" type="xs:string"/>
+                    <xs:element name="kapalNama" type="xs:string"/>
+                    <xs:element name="nahkoda" type="xs:string"/>
+                    <xs:element name="drt" type="xs:string"/>
+                    <xs:element name="grt" type="xs:string"/>
+                    <xs:element name="loa" type="xs:string"/>
+                    <xs:element name="jenisTrayek" type="xs:string"/>
+                    <xs:element name="bendera" type="xs:string"/>
+                    <xs:element name="callSign" type="xs:string"/>
+                    <xs:element name="imoNumber" type="xs:string"/>
+                    <xs:element name="tanggalEta" type="xs:string"/>
+                    <xs:element name="tanggalEtd" type="xs:string"/>
+                    <xs:element name="kodeAsalPelabuhan" type="xs:string"/>
+                    <xs:element name="asalPelabuhan" type="xs:string"/>
+                    <xs:element name="kodeTujuanPelabuhan" type="xs:string"/>
+                    <xs:element name="tujuanPelabuhan" type="xs:string"/>
+                    <xs:element name="dermagaNama" type="xs:string"/>
+                    <xs:element name="penumpangNaikTurunBongkar" type="xs:string"/>
+                    <xs:element name="penumpangNaikTurunMuat" type="xs:string"/>
+                    <xs:element name="jenisBarang" type="xs:string"/>
+                    <xs:element name="containerBongkarIsi40" type="xs:string" minOccurs="0"/>
+                    <xs:element name="containerBongkarIsi20" type="xs:string" minOccurs="0"/>
+                    <xs:element name="containerBongkarIsi40Empty" type="xs:string" minOccurs="0"/>
+                    <xs:element name="containerBongkarIsi20Empty" type="xs:string" minOccurs="0"/>
+                    <xs:element name="containerMuatIsi40" type="xs:string" minOccurs="0"/>
+                    <xs:element name="containerMuatIsi20" type="xs:string" minOccurs="0"/>
+                    <xs:element name="containerMuatIsi40Empty" type="xs:string" minOccurs="0"/>
+                    <xs:element name="containerMuatIsi20Empty" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cargoBarangCampurBongkar" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cargoBarangCampurMuat" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cargoBarangKarungBongkar" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cargoBarangKarungMuat" type="xs:string"/>
+                    <xs:element name="cargoBarangCurahBongkar" type="xs:string"/>
+                    <xs:element name="cargoBarangCurahMuat" type="xs:string"/>
+                    <xs:element name="cargoBarangCairBongkar" type="xs:string"/>
+                    <xs:element name="cargoBarangCairMuat" type="xs:string"/>
+                    <xs:element name="cargoBarangBerbahayaBongkar" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cargoBarangBerbahayaMuat" type="xs:string" minOccurs="0"/>
+                    <xs:element name="jenisBarangLain" type="xs:string" minOccurs="0"/>
+                    <xs:element name="jenisBarangLainBongkar" type="xs:string" minOccurs="0"/>
+                    <xs:element name="jenisBarangLainMuat" type="xs:string" minOccurs="0"/>
+                    <xs:element name="jumlahBongkar" type="xs:string" minOccurs="0"/>
+                    <xs:element name="jumlahMuat" type="xs:string" minOccurs="0"/>
+                    <xs:element name="hewanNaikTurunBongkar" type="xs:string" minOccurs="0"/>
+                    <xs:element name="hewanNaikTurunMuat" type="xs:string" minOccurs="0"/>
+                    <xs:element name="portCode" type="xs:string"/>
+                    <xs:element name="sts" type="xs:string" minOccurs="0"/>
+                    <xs:element name="npwp" type="xs:string"/>
+                    <xs:element name="kodeMuatPelabuhan" type="xs:string"/>
+                    <xs:element name="muatPelabuhan" type="xs:string"/>
+                    <xs:element name="kodeTujuanAkhirPelabuhan" type="xs:string"/>
+                    <xs:element name="tujuanAkhirPelabuhan" type="xs:string"/>
+                    <xs:element name="jenisKapal" type="xs:string"/>
+                    <xs:element name="tahunPembuatan" type="xs:string"/>
+                    <xs:element name="lebarKapal" type="xs:string"/>
+                    <xs:element name="drMax" type="xs:string"/>
+                    <xs:element name="drDepan" type="xs:string"/>
+                    <xs:element name="drBelakang" type="xs:string"/>
+                    <xs:element name="drTengah" type="xs:string" minOccurs="0"/>
+                    <xs:element name="noinmarsat" type="xs:string" minOccurs="0"/>
+                    <xs:element name="nomorTrayek" type="xs:string"/>
+                    <xs:element name="statusBM" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="req" type="pkk:reqPKKType"/>
+            <xs:element name="return" type="pkk:entryPKKResponseType"/>
+        </xs:schema>
+        <xs:schema xmlns:spog="SPOG" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="SPOG" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="reqSPOGType">
+                <xs:sequence>
+                    <xs:element name="nomorPkk" type="xs:string"/>
+                    <xs:element name="nomorPpkb" type="xs:string"/>
+                    <xs:element name="nomorSpk" type="xs:string"/>
+                    <xs:element name="nomorSpog" type="xs:string"/>
+                    <xs:element name="portCode" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="returnSPOGType">
+                <xs:sequence>
+                    <xs:element name="nomorPpkb" type="xs:string"/>
+                    <xs:element name="nomorSpk" type="xs:string"/>
+                    <xs:element name="nomorSpog" type="xs:string"/>
+                    <xs:element name="portCode" type="xs:string"/>
+                    <xs:element name="statusCode" type="xs:string"/>
+                    <xs:element name="statusMessage" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="req" type="spog:reqSPOGType"/>
+            <xs:element name="return" type="spog:returnSPOGType"/>
+        </xs:schema>
+        <xs:schema xmlns:pmt="PerpanjanganTambat" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="PerpanjanganTambat" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="reqPerpanjanganTambatType">
+                <xs:sequence>
+                    <xs:element name="nomorMasaTambat" type="xs:string"/>
+                    <xs:element name="nomorRpkRo" type="xs:string"/>
+                    <xs:element name="nomorPkk" type="xs:string"/>
+                    <xs:element name="tanggalPermohonan" type="xs:string"/>
+                    <xs:element name="kodeDermaga" type="xs:string"/>
+                    <xs:element name="tanggalMulai" type="xs:string"/>
+                    <xs:element name="tanggalSelesai" type="xs:string"/>
+                    <xs:element name="portCode" type="xs:string"/>
+                    <xs:element name="alasan" type="xs:string" minOccurs="0"/>
+                    <xs:element name="catatan" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="returnPerpanjanganTambatType">
+                <xs:sequence>
+                    <xs:element name="nomorMasaTambat" type="xs:string"/>
+                    <xs:element name="nomorRpkRo" type="xs:string"/>
+                    <xs:element name="nomorPkk" type="xs:string"/>
+                    <xs:element name="portCode" type="xs:string"/>
+                    <xs:element name="statusCode" type="xs:string"/>
+                    <xs:element name="statusMessage" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="req" type="pmt:reqPerpanjanganTambatType"/>
+            <xs:element name="return" type="pmt:returnPerpanjanganTambatType"/>
+        </xs:schema>
+        <xs:schema xmlns:rkbm="RKBM" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="RKBM" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="DetailRKBMType">
+                <xs:sequence>
+                    <xs:element name="namaBarang" type="xs:string"/>
+                    <xs:element name="bahaya" type="xs:string"/>
+                    <xs:element name="ganggu" type="xs:string"/>
+                    <xs:element name="kegiatan" type="xs:string"/>
+                    <xs:element name="unit" type="xs:string" minOccurs="0"/>
+                    <xs:element name="ton" type="xs:string" minOccurs="0"/>
+                    <xs:element name="m3" type="xs:string" minOccurs="0"/>
+                    <xs:element name="penyaluran" type="xs:string"/>
+                    <xs:element name="kade" type="xs:string"/>
+                    <xs:element name="pbm" type="xs:string"/>
+                    <xs:element name="npwpPbm" type="xs:string"/>
+                    <xs:element name="consignee" type="xs:string"/>
+                    <xs:element name="shipper" type="xs:string"/>
+                    <xs:element name="npwpShipper" type="xs:string"/>
+                    <xs:element name="blNo" type="xs:string"/>
+                    <xs:element name="gang" type="xs:string"/>
+                    <xs:element name="palka" type="xs:string"/>
+                    <xs:element name="noRkbmBongkar" type="xs:string"/>
+                    <xs:element name="rencanaBongkar" type="xs:string" minOccurs="0"/>
+                    <xs:element name="noRkbmMuat" type="xs:string"/>
+                    <xs:element name="rencanaMuat" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RequestEntryRKBMType">
+                <xs:sequence>
+                    <xs:element name="nomorPKK" type="xs:string"/>
+                    <xs:element name="portCode" type="xs:string"/>
+                    <xs:element ref="rkbm:DetailRKBM" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="returnRKBMResponeType">
+                <xs:sequence>
+                    <xs:element name="nomorPKK" type="xs:string"/>
+                    <xs:element name="portCode" type="xs:string"/>
+                    <xs:element name="statusCode" type="xs:string"/>
+                    <xs:element name="statusMessage" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="DetailRKBM" type="rkbm:DetailRKBMType"/>
+            <xs:element name="RequestEntryRKBM" type="rkbm:RequestEntryRKBMType"/>
+            <xs:element name="return" type="rkbm:returnRKBMResponeType"/>
+        </xs:schema>
+        <xs:schema xmlns="SchemaNewVMS" xmlns:ppk="PPK" xmlns:spog="SPOG" xmlns:pkk="PKK" xmlns:rkbm="RKBM" xmlns:pmt="PerpanjanganTambat" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pk="PindahKeluar" targetNamespace="SchemaNewVMS" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:import namespace="PKK"/>
+            <xs:import namespace="RKBM"/>
+            <xs:import namespace="SPOG"/>
+            <xs:import namespace="PindahKeluar"/>
+            <xs:import namespace="PPK"/>
+            <xs:import namespace="PerpanjanganTambat"/>
+            <xs:complexType name="itemType">
+                <xs:sequence>
+                    <xs:element name="key" type="xs:string"/>
+                    <xs:element ref="ns0:value"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="parametersType">
+                <xs:sequence>
+                    <xs:element ref="ns0:item"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="valueType">
+                <xs:choice>
+                    <xs:element ref="ns0:returnRealisasiTunda" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="ns0:returnRpkro" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="ns0:returnSpkPandu" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:choice>
+            </xs:complexType>
+            <xs:element name="SendRealisasiPandu" type="ns0:reqRealisasiPanduType"/>
+            <xs:element name="SendRealisasiTambat" type="ns0:reqRealisasiTambatType"/>
+            <xs:element name="SendRealisasiTunda" type="ns0:reqRealisasiTundaType"/>
+            <xs:element name="SetSpkPandu" type="ns0:reqSpkPanduType"/>
+            <xs:element name="entryPKK">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="pkk:req"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="entryPKKResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="pkk:return"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="entryPPK">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ppk:req"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="entryPPKResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ppk:return"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="entryPerpanjanganMasaTambat">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="pmt:req"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="entryPerpanjanganMasaTambatResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="pmt:return"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="entryPindahKeluar">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="pk:req"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="entryPindahKeluarResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="pk:return"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="entryRKBM">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="rkbm:RequestEntryRKBM"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="entryRKBMResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="rkbm:return"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="entryRpkro" type="ns0:reqRpkroType"/>
+            <xs:element name="entryRpkroDetail" type="ns0:reqRpkroDetailType"/>
+            <xs:element name="entrySPOG">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="spog:req"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="entrySPOGResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="spog:return"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="item" type="ns0:itemType"/>
+            <xs:element name="parameters" type="ns0:parametersType"/>
+            <xs:element name="returnRealisasiTunda" type="ns0:returnRealisasiTundaType"/>
+            <xs:element name="returnRpkro" type="ns0:returnRpkroType"/>
+            <xs:element name="returnSpkPandu" type="ns0:returnSpkPanduType"/>
+            <xs:element name="value" type="ns0:valueType"/>
+            <xs:complexType name="reqSpkPanduType">
+                <xs:sequence>
+                    <xs:element name="user" type="xs:string"/>
+                    <xs:element name="password" type="xs:string"/>
+                    <xs:element name="NomorPkk" type="xs:string"/>
+                    <xs:element name="NomorPpk" type="xs:string"/>
+                    <xs:element name="NomorSPKPandu" type="xs:string"/>
+                    <xs:element name="NamaPetugasPandu" type="xs:string"/>
+                    <xs:element name="TanggalPandu" type="xs:string"/>
+                    <xs:element name="JamPandu" type="xs:string"/>
+                    <xs:element name="NamaKapalPandu1" type="xs:string" minOccurs="0"/>
+                    <xs:element name="NamaKapalPandu2" type="xs:string" minOccurs="0"/>
+                    <xs:element name="NamaKapalTunda1" type="xs:string" minOccurs="0"/>
+                    <xs:element name="NamaKapalTunda2" type="xs:string" minOccurs="0"/>
+                    <xs:element name="NamaKapalTunda3" type="xs:string" minOccurs="0"/>
+                    <xs:element name="NamaKapalTunda4" type="xs:string" minOccurs="0"/>
+                    <xs:element name="JenisPandu" type="xs:string" minOccurs="0"/>
+                    <xs:element name="LokasiAwal" type="xs:string"/>
+                    <xs:element name="LokasiAkhir" type="xs:string"/>
+                    <xs:element name="Kegiatan" type="xs:string"/>
+                    <xs:element name="WaktuGerak" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="returnSpkPanduType">
+                <xs:sequence>
+                    <xs:element name="statusCode" type="xs:string"/>
+                    <xs:element name="statusMessage" type="xs:string"/>
+                    <xs:element name="NomorSPKPandu" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="reqRpkroType">
+                <xs:sequence>
+                    <xs:element name="user" type="xs:string"/>
+                    <xs:element name="password" type="xs:string"/>
+                    <xs:element name="NomorRpkRo" type="xs:string"/>
+                    <xs:element name="KodeDermaga" type="xs:string"/>
+                    <xs:element name="TanggalRencana" type="xs:string"/>
+                    <xs:element name="JamRencana" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="returnRpkroType">
+                <xs:sequence>
+                    <xs:element name="statusCode" type="xs:string"/>
+                    <xs:element name="statusMessage" type="xs:string"/>
+                    <xs:element name="NomorRpkRo" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="reqRpkroDetailType">
+                <xs:sequence>
+                    <xs:element name="user" type="xs:string"/>
+                    <xs:element name="password" type="xs:string"/>
+                    <xs:element name="NomorRpkRo" type="xs:string"/>
+                    <xs:element name="NomorPkk" type="xs:string"/>
+                    <xs:element name="NomorPPKB" type="xs:string"/>
+                    <xs:element name="NomorRkbmMuat" type="xs:string" minOccurs="0"/>
+                    <xs:element name="NomorRkbmBongkar" type="xs:string" minOccurs="0"/>
+                    <xs:element name="KegiatanBongkar" type="xs:string"/>
+                    <xs:element name="KegiatanMuat" type="xs:string"/>
+                    <xs:element name="Komoditi" type="xs:string"/>
+                    <xs:element name="NomorGudang" type="xs:string" minOccurs="0"/>
+                    <xs:element name="Keterangan" type="xs:string"/>
+                    <xs:element name="TanggalMulaiTambat" type="xs:string"/>
+                    <xs:element name="JamMulaiTambat" type="xs:string"/>
+                    <xs:element name="TanggalSelesaiTambat" type="xs:string"/>
+                    <xs:element name="JamSelesaiTambat" type="xs:string"/>
+                    <xs:element name="KadeMeterAwal" type="xs:string"/>
+                    <xs:element name="KadeMeterAkhir" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="reqRealisasiPanduType">
+                <xs:sequence>
+                    <xs:element name="user" type="xs:string"/>
+                    <xs:element name="password" type="xs:string"/>
+                    <xs:element name="NomorPkk" type="xs:string"/>
+                    <xs:element name="NomorSpk" type="xs:string"/>
+                    <xs:element name="NomorPpkbPandu" type="xs:string"/>
+                    <xs:element name="TanggalMulaiPandu" type="xs:string"/>
+                    <xs:element name="JamMulaiPandu" type="xs:string"/>
+                    <xs:element name="TanggalNaikPandu" type="xs:string"/>
+                    <xs:element name="JamNaikPandu" type="xs:string"/>
+                    <xs:element name="TanggalSelesaiPandu" type="xs:string"/>
+                    <xs:element name="JamSelesaiPandu" type="xs:string"/>
+                    <xs:element name="TanggalTurunPandu" type="xs:string"/>
+                    <xs:element name="JamTurunPandu" type="xs:string"/>
+                    <xs:element name="JenisPandu" type="xs:string"/>
+                    <xs:element name="JenisGerakan" type="xs:string"/>
+                    <xs:element name="LokasiAwal" type="xs:string"/>
+                    <xs:element name="LokasiAkhir" type="xs:string"/>
+                    <xs:element name="GtKapal" type="xs:string"/>
+                    <xs:element name="TarifTetap" type="xs:string"/>
+                    <xs:element name="TarifTVariabel" type="xs:string"/>
+                    <xs:element name="Prosentase" type="xs:string"/>
+                    <xs:element name="Biaya" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="reqRealisasiPandu" type="ns0:reqRealisasiPanduType"/>
+            <xs:complexType name="reqRealisasiTambatType">
+                <xs:sequence>
+                    <xs:element name="user" type="xs:string"/>
+                    <xs:element name="password" type="xs:string"/>
+                    <xs:element name="NomorPkk" type="xs:string"/>
+                    <xs:element name="NomorPpk" type="xs:string" minOccurs="0"/>
+                    <xs:element name="NomorPpkbTambat" type="xs:string"/>
+                    <xs:element name="TanggalMulaiTambat" type="xs:string"/>
+                    <xs:element name="JamMulaiTambat" type="xs:string"/>
+                    <xs:element name="TanggalSelesaiTambat" type="xs:string"/>
+                    <xs:element name="JamSelesaiTambat" type="xs:string"/>
+                    <xs:element name="Dermaga" type="xs:string"/>
+                    <xs:element name="KadeAwal" type="xs:string"/>
+                    <xs:element name="KadeAkhir" type="xs:string"/>
+                    <xs:element name="GtKapal" type="xs:string"/>
+                    <xs:element name="TarifTetap" type="xs:string"/>
+                    <xs:element name="TarifTVariabel" type="xs:string"/>
+                    <xs:element name="Prosentase" type="xs:string"/>
+                    <xs:element name="Biaya" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="reqRealisasiTambat" type="ns0:reqRealisasiTambatType"/>
+            <xs:complexType name="reqRealisasiTundaType">
+                <xs:sequence>
+                    <xs:element name="user" type="xs:string"/>
+                    <xs:element name="password" type="xs:string"/>
+                    <xs:element name="NomorPkk" type="xs:string"/>
+                    <xs:element name="NomorPpk" type="xs:string" minOccurs="0"/>
+                    <xs:element name="JenisKegiatan" type="xs:string"/>
+                    <xs:element name="NomorPpkbTunda" type="xs:string"/>
+                    <xs:element name="TanggalMulaiTunda" type="xs:string"/>
+                    <xs:element name="JamMulaiTunda" type="xs:string"/>
+                    <xs:element name="TanggalSelesaiTunda" type="xs:string"/>
+                    <xs:element name="JamSelesaiTunda" type="xs:string"/>
+                    <xs:element name="LokasiAwal" type="xs:string"/>
+                    <xs:element name="LokasiAkhir" type="xs:string"/>
+                    <xs:element name="GtKapal" type="xs:string"/>
+                    <xs:element name="TarifTetap" type="xs:string"/>
+                    <xs:element name="TarifTVariabel" type="xs:string"/>
+                    <xs:element name="Prosentase" type="xs:string"/>
+                    <xs:element name="Biaya" type="xs:string"/>
+                    <xs:element name="DurasiTunda" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="returnRealisasiTundaType">
+                <xs:sequence>
+                    <xs:element name="statusCode" type="xs:string"/>
+                    <xs:element name="statusMessage" type="xs:string"/>
+                    <xs:element name="NomorPKK" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="reqRealisasiTunda" type="ns0:reqRealisasiTundaType"/>
+        </xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pk="PindahKeluar" targetNamespace="PindahKeluar" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="reqPindahKeluarType">
+                <xs:sequence>
+                    <xs:element name="nomorPkk" type="xs:string"/>
+                    <xs:element name="nomorPpkb" type="xs:string"/>
+                    <xs:element name="tanggalMulai" type="xs:string"/>
+                    <xs:element name="jamMulai" type="xs:string"/>
+                    <xs:element name="tanggalSelesai" type="xs:string"/>
+                    <xs:element name="jamSelesai" type="xs:string"/>
+                    <xs:element name="tanggalPandu" type="xs:string"/>
+                    <xs:element name="jamPandu" type="xs:string"/>
+                    <xs:element name="tanggalTunda" type="xs:string"/>
+                    <xs:element name="jamTunda" type="xs:string"/>
+                    <xs:element name="lokasiAsal" type="xs:string"/>
+                    <xs:element name="lokasiTujuan" type="xs:string"/>
+                    <xs:element name="jenisGerakan" type="xs:string"/>
+                    <xs:element name="portCode" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="returnPindahKeluarResponseType">
+                <xs:sequence>
+                    <xs:element name="nomorPkk" type="xs:string"/>
+                    <xs:element name="nomorPpkb" type="xs:string"/>
+                    <xs:element name="portCode" type="xs:string"/>
+                    <xs:element name="statusCode" type="xs:string"/>
+                    <xs:element name="statusMessage" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="req" type="pk:reqPindahKeluarType"/>
+            <xs:element name="return" type="pk:returnPindahKeluarResponseType"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="WSDL_VMS_Service-service0">
+        <wsdl:port name="ServiceNewVMSEndpoint0" binding="tns:ServiceNewVMSEndpoint0Binding">
+            <soap:address location="http://103.19.80.98:9887/Services/V1_New_VMS_Root/WS_VMS_/WSDL_Format/WSDL_VMS_Service-service0.serviceagent/ServiceNewVMSEndpoint0"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="ServiceNewVMS">
+        <wsdl:operation name="SetSPKPandu">
+            <wsdl:input message="tns:RqSPKPandu"/>
+            <wsdl:output message="tns:RsSPKPandu"/>
+        </wsdl:operation>
+        <wsdl:operation name="entryPPK">
+            <wsdl:input message="tns:RqPPK"/>
+            <wsdl:output message="tns:RsPPK"/>
+        </wsdl:operation>
+        <wsdl:operation name="SendRealisasiTunda">
+            <wsdl:input message="tns:RqRealisasiTunda"/>
+            <wsdl:output message="tns:RsRealisasiTunda"/>
+        </wsdl:operation>
+        <wsdl:operation name="entryRKBM">
+            <wsdl:input message="tns:RqRKBM"/>
+            <wsdl:output message="tns:RsRKBM"/>
+        </wsdl:operation>
+        <wsdl:operation name="entryPKK">
+            <wsdl:input message="tns:RqPKK"/>
+            <wsdl:output message="tns:RsPKK"/>
+        </wsdl:operation>
+        <wsdl:operation name="entryPerpanjanganMasaTambat">
+            <wsdl:input message="tns:RqPerpanjanganMasaTambat"/>
+            <wsdl:output message="tns:RsPerpanjanganMasaTambat"/>
+        </wsdl:operation>
+        <wsdl:operation name="SendRealisasiTambat">
+            <wsdl:input message="tns:RqRealisasiTambat"/>
+            <wsdl:output message="tns:RsRealisasiTambat"/>
+        </wsdl:operation>
+        <wsdl:operation name="entryPindahKeluar">
+            <wsdl:input message="tns:RqPindahKeluar"/>
+            <wsdl:output message="tns:RsPindahKeluar"/>
+        </wsdl:operation>
+        <wsdl:operation name="entryRpkro">
+            <wsdl:input message="tns:RqRPKRO"/>
+            <wsdl:output message="tns:RsRPKRO"/>
+        </wsdl:operation>
+        <wsdl:operation name="entryRpkroDetail">
+            <wsdl:input message="tns:RqRPKRODetail"/>
+            <wsdl:output message="tns:RsRPKRODetail"/>
+        </wsdl:operation>
+        <wsdl:operation name="SendRealisasiPandu">
+            <wsdl:input message="tns:RqRealisasiPandu"/>
+            <wsdl:output message="tns:RsRealisasiPandu"/>
+        </wsdl:operation>
+        <wsdl:operation name="entrySPOG">
+            <wsdl:input message="tns:RqSPOG"/>
+            <wsdl:output message="tns:RsSPOG"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ServiceNewVMSEndpoint0Binding" type="tns:ServiceNewVMS">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="SetSPKPandu">
+            <soap:operation style="document" soapAction="/Services/V1_New_VMS_Root/WS_VMS_/WSDL_Service/WSDL_VMS_Service-service0.serviceagent//SetSPKPandu"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="entryPPK">
+            <soap:operation style="document" soapAction="/Services/V1_New_VMS_Root/WS_VMS_/WSDL_Service/WSDL_VMS_Service-service0.serviceagent//entryPPK"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="entryPPK"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="responePPK"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SendRealisasiTunda">
+            <soap:operation style="document" soapAction="/Services/V1_New_VMS_Root/WS_VMS_/WSDL_Service/WSDL_VMS_Service-service0.serviceagent//SendRealisasiTunda"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="entryRKBM">
+            <soap:operation style="document" soapAction="/Services/V1_New_VMS_Root/WS_VMS_/WSDL_Service/WSDL_VMS_Service-service0.serviceagent//entryRKBM"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="entryRKBM"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="responeRKBM"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="entryPKK">
+            <soap:operation style="document" soapAction="/Services/V1_New_VMS_Root/WS_VMS_/WSDL_Service/WSDL_VMS_Service-service0.serviceagent//entryPKK"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="entryPKK"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="responePKK"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="entryPerpanjanganMasaTambat">
+            <soap:operation style="document" soapAction="/Services/V1_New_VMS_Root/WS_VMS_/WSDL_Service/WSDL_VMS_Service-service0.serviceagent//entryPerpanjanganMasaTambat"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="PerpanjanganMasaTambat"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="PerpanjanganMasaTambatResponse"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SendRealisasiTambat">
+            <soap:operation style="document" soapAction="/Services/V1_New_VMS_Root/WS_VMS_/WSDL_Service/WSDL_VMS_Service-service0.serviceagent//SendRealisasiTambat"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="entryPindahKeluar">
+            <soap:operation style="document" soapAction="/Services/V1_New_VMS_Root/WS_VMS_/WSDL_Service/WSDL_VMS_Service-service0.serviceagent//entryPindahKeluar"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="entryPindahKeluar"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="responePindahKeluar"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="entryRpkro">
+            <soap:operation style="document" soapAction="/Services/V1_New_VMS_Root/WS_VMS_/WSDL_Service/WSDL_VMS_Service-service0.serviceagent//entryRpkro"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="entryRpkroDetail">
+            <soap:operation style="document" soapAction="/Services/V1_New_VMS_Root/WS_VMS_/WSDL_Service/WSDL_VMS_Service-service0.serviceagent//entryRpkroDetail"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SendRealisasiPandu">
+            <soap:operation style="document" soapAction="/Services/V1_New_VMS_Root/WS_VMS_/WSDL_Service/WSDL_VMS_Service-service0.serviceagent//SendRealisasiPandu"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="entrySPOG">
+            <soap:operation style="document" soapAction="/Services/V1_New_VMS_Root/WS_VMS_/WSDL_Service/WSDL_VMS_Service-service0.serviceagent//entrySPOG"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="entrySPOG"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="responeSPOG"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="RqSPKPandu">
+        <wsdl:part name="parameters" element="ns0:SetSpkPandu"/>
+    </wsdl:message>
+    <wsdl:message name="RsSPKPandu">
+        <wsdl:part name="parameters" element="ns0:item"/>
+    </wsdl:message>
+    <wsdl:message name="RqPPK">
+        <wsdl:part name="entryPPK" element="ns0:entryPPK"/>
+    </wsdl:message>
+    <wsdl:message name="RsPPK">
+        <wsdl:part name="responePPK" element="ns0:entryPPKResponse"/>
+    </wsdl:message>
+    <wsdl:message name="RqRealisasiTunda">
+        <wsdl:part name="parameters" element="ns0:SendRealisasiTunda"/>
+    </wsdl:message>
+    <wsdl:message name="RsRealisasiTunda">
+        <wsdl:part name="parameters" element="ns0:item"/>
+    </wsdl:message>
+    <wsdl:message name="RqRKBM">
+        <wsdl:part name="entryRKBM" element="ns0:entryRKBM"/>
+    </wsdl:message>
+    <wsdl:message name="RsRKBM">
+        <wsdl:part name="responeRKBM" element="ns0:entryRKBMResponse"/>
+    </wsdl:message>
+    <wsdl:message name="RqPKK">
+        <wsdl:part name="entryPKK" element="ns0:entryPKK"/>
+    </wsdl:message>
+    <wsdl:message name="RsPKK">
+        <wsdl:part name="responePKK" element="ns0:entryPKKResponse"/>
+    </wsdl:message>
+    <wsdl:message name="RqPerpanjanganMasaTambat">
+        <wsdl:part name="PerpanjanganMasaTambat" element="ns0:entryPerpanjanganMasaTambat"/>
+    </wsdl:message>
+    <wsdl:message name="RsPerpanjanganMasaTambat">
+        <wsdl:part name="PerpanjanganMasaTambatResponse" element="ns0:entryPerpanjanganMasaTambatResponse"/>
+    </wsdl:message>
+    <wsdl:message name="RqRealisasiTambat">
+        <wsdl:part name="parameters" element="ns0:SendRealisasiTambat"/>
+    </wsdl:message>
+    <wsdl:message name="RsRealisasiTambat">
+        <wsdl:part name="parameters" element="ns0:item"/>
+    </wsdl:message>
+    <wsdl:message name="RqPindahKeluar">
+        <wsdl:part name="entryPindahKeluar" element="ns0:entryPindahKeluar"/>
+    </wsdl:message>
+    <wsdl:message name="RsPindahKeluar">
+        <wsdl:part name="responePindahKeluar" element="ns0:entryPindahKeluarResponse"/>
+    </wsdl:message>
+    <wsdl:message name="RqRPKRO">
+        <wsdl:part name="parameters" element="ns0:entryRpkro"/>
+    </wsdl:message>
+    <wsdl:message name="RsRPKRO">
+        <wsdl:part name="parameters" element="ns0:item"/>
+    </wsdl:message>
+    <wsdl:message name="RqRPKRODetail">
+        <wsdl:part name="parameters" element="ns0:entryRpkroDetail"/>
+    </wsdl:message>
+    <wsdl:message name="RsRPKRODetail">
+        <wsdl:part name="parameters" element="ns0:item"/>
+    </wsdl:message>
+    <wsdl:message name="RqRealisasiPandu">
+        <wsdl:part name="parameters" element="ns0:SendRealisasiPandu"/>
+    </wsdl:message>
+    <wsdl:message name="RsRealisasiPandu">
+        <wsdl:part name="parameters" element="ns0:item"/>
+    </wsdl:message>
+    <wsdl:message name="RqSPOG">
+        <wsdl:part name="entrySPOG" element="ns0:entrySPOG"/>
+    </wsdl:message>
+    <wsdl:message name="RsSPOG">
+        <wsdl:part name="responeSPOG" element="ns0:entrySPOGResponse"/>
+    </wsdl:message>
+</wsdl:definitions>
